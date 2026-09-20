@@ -1,9 +1,0 @@
-scenario_id,decision,blocking_guardrail,evidence,proposed_lever,magnitude,approver,cooldown_or_next_check,rollback,status_reason
-SC01,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC01,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC02,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC02,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC03,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC03,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC04,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC04,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC05,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC05,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC06,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC06,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC07,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC07,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW
-SC08,OWNER TO REVIEW,OWNER TO REVIEW,harbour-hearth-optimisation-scenarios.csv SC08,OWNER TO REVIEW,OWNER TO REVIEW,Marketing Owner,OWNER TO REVIEW,Restore recorded prior configuration,OWNER TO REVIEW

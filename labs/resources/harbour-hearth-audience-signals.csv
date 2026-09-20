@@ -1,9 +1,0 @@
-signal_id,source_type,evidence,limitation
-S01,observed,"Synthetic Instagram comment themes repeatedly ask whether collection is available before 9:00 am.","Theme count and customer identities are not supplied."
-S02,observed,"Synthetic pre-order timestamps cluster on Tuesday to Thursday between 7:10 am and 8:30 am.","The dataset does not identify customer roles or reasons."
-S03,declared,"In a synthetic aggregate interview note, participants said coordinating breakfast for a small work team takes time.","The sample size and representativeness are unknown."
-S04,observed,"Synthetic Instagram direct-message themes include repeated questions about the previous-day ordering cut-off and collection window.","Questions do not prove purchase intent."
-S05,inferred,"The marketing team hypothesises that office coordinators value a predictable collection routine.","This is a hypothesis, not an observed customer fact."
-S06,unknown,"No evidence is supplied about age, income, ethnicity, family status, job title, or personal interests.","Do not invent or use these traits."
-S07,observed,"Synthetic content notes show process-focused posts receive more saves than offer-only posts.","No causal relationship or conversion result is supplied."
-S08,declared,"Synthetic feedback says clear product contents make group ordering easier.","It does not establish willingness to pay or preferred creative format."
