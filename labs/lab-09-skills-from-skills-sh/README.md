@@ -15,7 +15,7 @@ Borrow expertise. Install a design skill to polish the site and two security ski
 
 ## You'll build
 
-A polished UI, a ranked security review, and skills-lock.json
+A polished UI, a ranked security review, and the skills lock file
 
 ## What is in this folder
 
@@ -28,10 +28,10 @@ A polished UI, a ranked security review, and skills-lock.json
 
 1. **Install frontend-design** — Run the first command in skills-to-install.md. It lands in .agents/skills/.
 2. **Read before you run** — Open the SKILL.md. Skills run with your permissions.
-3. **Polish the site** — Paste Prompt A.
+3. **Polish the site** — Paste Prompt A. It uses brand.md, in your project since Lab 2.
 4. **Install the security skills** — Run the two security commands.
 5. **Review the attack surface** — Paste Prompt B. Fix the top finding.
-6. **Commit the lock file** — skills-lock.json records exactly what you installed.
+6. **Commit the lock file** — skills.sh creates it automatically; it records exactly what you installed.
 
 ## The prompts
 
@@ -67,7 +67,7 @@ npx skills add https://github.com/reason-machines/security-skills \
 
 ## Check your work
 
-- [ ] Three skills are in .agents/skills/ and skills-lock.json.
+- [ ] Three skills are in .agents/skills/ and in the lock file.
 - [ ] You read each SKILL.md before running it.
 - [ ] The design change kept every fee and behaviour — check the diff.
 - [ ] The security review ranks findings with evidence.

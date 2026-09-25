@@ -24,6 +24,7 @@ Four marketing skills (brand-voice, flyer-design, social-post, youtube-package) 
 - `assets/term-highlights.md`
 - `assets/marketing-skills-spec.md`
 - `assets/marketing-skills-reference/`
+- `assets/courses.csv`
 - `prompts.md` / `prompts.pdf` — every prompt, ready to paste
 - `evidence/checklist.md` — what to capture as proof
 
@@ -51,7 +52,7 @@ Four marketing skills (brand-voice, flyer-design, social-post, youtube-package) 
 > $skill-creator Create three project skills from
 > marketing-skills-spec.md: flyer-design,
 > social-post and youtube-package. Each follows
-> brand-voice, takes facts only from courses.json or
+> brand-voice, takes facts only from courses.csv or
 > term-highlights.md, and says exactly what it hands
 > back.
 

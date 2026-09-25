@@ -1,6 +1,6 @@
 # Agentic AI Applications with Codex — Learner Guide
 
-C695 · Version 12.1 · Tertiary Infotech Academy Pte Ltd (UEN 201200696W)
+C695 · Version 12.4 · Tertiary Infotech Academy Pte Ltd (UEN 201200696W)
 
 ## How to Use This Guide
 
@@ -66,7 +66,7 @@ Five topics over two days. Every topic ends in labs that move the business forwa
 
 1. **T1 · Fundamentals** — Validate the idea, build the site with sign-up forms, and publish it. Labs 1–4.
 1. **T2 · RAG Assistant** — SQLite knowledge base, course assistant, ChatGPT mode, Computer Use QA. Labs 5–8.
-1. **T3 · Skills and Hooks** — skills.sh, custom skills, hooks, a deploy gate and a scheduled check. Labs 9–11.
+1. **T3 · Skills and Hooks** — skills.sh, custom skills, a workshop popup and a hook that checks every edit. Labs 9–11.
 1. **T4 · Operations** — Pricing, calendar, enrolment, customer service with Work. Labs 12–15.
 1. **T5 · Marketing** — Marketing skills and the flyer, a multi-agent studio, the open-house campaign. Labs 16–18.
 
@@ -78,7 +78,7 @@ Eighteen labs, each in its own folder with a README, prompts (MD and PDF), asset
 |---|---|---|
 | 1 | 1 Validate · 2 Build · 3 Rules + sign-up · 4 Publish | Chat, Work, Codex |
 | 1 | 5 Knowledge base · 6 Assistant + /goal · 7 ChatGPT mode · 8 QA | Codex |
-| 1 | 9 skills.sh · 10 Custom skills · 11 Guard rails | Codex |
+| 1 | 9 skills.sh · 10 Custom skills · 11 Popup + hook | Codex |
 | 2 | 12 Pricing · 13 Calendar · 14 Enrolment · 15 Customer service | Work, Chat |
 | 2 | 16 Marketing skills + flyer · 17 Multi-agent studio · 18 Open house | Chat, Codex, Work |
 
@@ -131,8 +131,8 @@ If the model is the brain, the harness is the body — the operating system that
 - **Tools & plugins** — Shell, file edits, web search; plugins such as GitHub, Gmail and @Computer Use.
 - **Skills** — Made with $skill-creator: SKILL.md folders, loaded on demand.
 - **Permissions & sandbox** — read-only · workspace-write · full access, plus approvals (/permissions).
-- **Hooks** — Scripts fired by events — e.g. PreToolUse blocks a leaked API key.
-- **Subagents** — Custom agents in .codex/agents/*.toml, each in its own thread.
+- **Hooks** — Scripts fired by events — e.g. re-run the site check after every edit.
+- **Subagents** — Specialists you describe in the prompt, each in its own thread.
 - **Verification** — Tests, CI, /review and browser checks — proof, not promises.
 
 OpenAI (Feb 2026): in five months Codex agents wrote a product of about a million lines — engineers designed the harness, not the code.
@@ -196,7 +196,7 @@ A plugin connects ChatGPT and Codex to a tool. Install once; call it with @ in a
 
 Install these five now so every lab just works. Use your personal Google account, never an employer's.
 
-- **@GitHub** — Repos, pull requests, issues and CI. Labs 4 and 11 — publish and review.
+- **@GitHub** — Repos, pull requests, issues and CI. Lab 4 — publish and review.
 - **@Computer Use** — Your desktop and browser. Lab 8. On macOS also grant Screen Recording and Accessibility, then restart.
 - **@Gmail** — Read mail and create drafts. Labs 14, 15, 18 — drafts only, to your own address.
 - **@Google Drive** — Docs, Sheets, Slides and files. Labs 12–18 read their data from Drive.
@@ -231,7 +231,7 @@ Sites turns work into a hosted page — static or full-stack.
 
 **Surface:** Chat → ChatGPT Work → @Sites  ·  **Time:** 25 min  ·  **Slides:** 23–29
 
-**Lab folder:** labs/lab-01-validate-the-idea/ — assets: business-idea.md, courses.json, report-outline.md
+**Lab folder:** labs/lab-01-validate-the-idea/ — assets: business-idea.md, courses.csv, report-outline.md
 
 **Step-by-step**
 
@@ -255,7 +255,7 @@ Sites turns work into a hosted page — static or full-stack.
 
 > Plan first, then research.
 
-> Research the market for hands-on cooking and baking classes in Singapore for Cook & Bake Academy. Our proposed catalogue is attached (courses.json).
+> Research the market for hands-on cooking and baking classes in Singapore for Cook & Bake Academy. Our proposed catalogue is attached (courses.csv).
 
 > Answer:
 > 1. Who the customers are — 3 personas.
@@ -333,7 +333,7 @@ The cheapest moment to catch a wrong approach is before any file changes.
 The reference build — yours will differ in the details, not the function.
 
 - **Hero with photos** — Headline, pitch, two calls to action and a three-photo collage.
-- **20 course cards** — Rendered from data/courses.json — no fee is ever hard-coded.
+- **20 course cards** — Rendered from data/courses.csv — no fee is ever hard-coded.
 - **Filters and search** — All / Bakery / Cooking, plus free-text search.
 - **Assistant button** — Opens the course assistant you build in Topic 2.
 
@@ -347,15 +347,15 @@ The reference build — yours will differ in the details, not the function.
 
 **Surface:** Codex  ·  **Time:** 30 min  ·  **Slides:** 34–37
 
-**Lab folder:** labs/lab-02-plan-and-build-the-site/ — assets: courses.json, brand.md, market-brief-sample.md, hero-images.md
+**Lab folder:** labs/lab-02-plan-and-build-the-site/ — assets: courses.csv, brand.md, market-brief-sample.md, hero-images.md
 
 **Step-by-step**
 
-1. **Create the project** — Make a folder cook-and-bake, run git init, and copy courses.json into data/ and brand.md to the root.
+1. **Create the project** — Make a folder cook-and-bake and run git init. Copy courses.csv into data/; brand.md and your Lab 1 market-brief.md (or the sample) into the root.
 1. **Open it in Codex** — Create a local project, then Edit project → Add folder → cook-and-bake. Select GPT-6 Sol.
 1. **Plan first** — Type /plan, then paste the prompt. Read the questions Codex asks.
 1. **Answer and narrow** — Answer every question. Cut or narrow one step, then approve.
-1. **Serve it** — Run python3 -m http.server 8080 — the page loads courses.json with fetch(), which fails on file://.
+1. **Serve it** — Run python3 -m http.server 8080. The page reads courses.csv from the web server, so opening the file directly will not work.
 1. **Look at it** — Open http://localhost:8080 at desktop width, then at 375px.
 
 **PROMPT — Codex, after /plan**
@@ -364,7 +364,7 @@ The reference build — yours will differ in the details, not the function.
 
 > MUST HAVE
 > - Hero: headline, one-line pitch, two buttons (Browse courses, Ask our course assistant) and a collage of 3 food photos (see hero-images.md).
-> - Course grid rendered from data/courses.json — never hard-code a fee. Card: photo, code, level, campus, title, summary, weeks, schedule, fee.
+> - Course grid read from data/courses.csv (one row per course; the learn and intakes columns list items separated by "; "). Never hard-code a fee. Card: photo, code, level, campus, title, summary, weeks, schedule, fee.
 > - Filter chips All / Bakery / Cooking + a search box.
 > - Campuses section and an empty FAQ section.
 
@@ -380,7 +380,7 @@ The reference build — yours will differ in the details, not the function.
 
 - ☐  Plan mode showed numbered steps AND questions before any edit.
 - ☐  You answered its questions instead of letting it guess.
-- ☐  All 20 cards render from data/courses.json — no fee in the HTML.
+- ☐  All 20 cards render from data/courses.csv — no fee in the HTML.
 - ☐  Bakery shows exactly 10 courses; Cooking shows 10.
 - ☐  The hero shows a three-photo collage.
 - ☐  No horizontal scroll at 375px wide.
@@ -495,7 +495,7 @@ The static build runs on both. Choose by audience and backend.
 **GitHub Pages**
 
 - Free static hosting from your repo
-- Deploys on push via GitHub Actions
+- Deploy from a branch: push, and it is live
 - Public URL for customers
 - No backend — and it never needs one
 
@@ -516,14 +516,13 @@ The static build runs on both. Choose by audience and backend.
 
 **Surface:** Codex → GitHub Pages → @Sites  ·  **Time:** 25 min  ·  **Slides:** 46–50
 
-**Lab folder:** labs/lab-04-publish-the-site/ — assets: pages-basic.yml, publish-checklist.md
+**Lab folder:** labs/lab-04-publish-the-site/ — assets: publish-checklist.md
 
 **Step-by-step**
 
 1. **Create the repo** — On github.com create cook-and-bake (or run gh repo create), then add it as the remote.
-1. **Add the workflow** — Copy pages-basic.yml to .github/workflows/pages.yml. It publishes the static files.
 1. **Commit and push** — Paste Prompt A. Read the file list before Codex commits.
-1. **Turn on Pages** — Repo Settings → Pages → Source: GitHub Actions. Watch the Actions run turn green.
+1. **Turn on Pages** — Repo Settings → Pages → Source: Deploy from a branch → main, / (root) → Save. After a minute the site URL appears at the top.
 1. **Publish on Sites too** — Paste Prompt B for the private investor copy.
 1. **Test on a phone** — Open both URLs on your phone and sign up for one course.
 
@@ -531,7 +530,7 @@ The static build runs on both. Choose by audience and backend.
 
 > Commit and push this project to GitHub.
 
-> Before committing, list every file you will add and confirm there is no .env file, API key or sign-up export among them. Write a commit message that says why, not what. Push to main, then give me the GitHub Actions run URL and the Pages URL.
+> Before committing, list every file you will add and confirm there is no .env file, API key or sign-up export among them. Write a commit message that says why, not what. Push to main, then give me the Pages URL (https://<your-user>.github.io/cook-and-bake/).
 
 **PROMPT B — @Sites**
 
@@ -540,15 +539,15 @@ The static build runs on both. Choose by audience and backend.
 **Check your work**
 
 - ☐  Codex listed the files and none is a secret or an export.
-- ☐  The Actions run is green and the Pages URL loads 20 courses.
+- ☐  The Pages URL loads the site with all 20 courses.
 - ☐  A sign-up works on the live Pages site from your phone.
 - ☐  The Sites copy is live and set to Only those invited.
 - ☐  You can say which URL is for customers and which for investors.
 
 **If it goes wrong**
 
-- **Pages shows 404** — Source must be "GitHub Actions", and the first deploy takes a minute or two.
-- **courses.json not found online** — Paths on Pages are case-sensitive: data/courses.json is not Data/Courses.json.
+- **Pages shows 404** — Source must be "Deploy from a branch" with main and / (root), and the first deploy takes a minute or two.
+- **courses.csv not found online** — Paths on Pages are case-sensitive: data/courses.csv is not Data/Courses.csv.
 
 **Stretch**
 
@@ -605,7 +604,7 @@ Where work runs, and how you check it.
 | /mcp | Open MCP status to see connected servers |
 | /memories | Choose whether the chat can use or create memories |
 
-Tip: Not commands: skills run with $name; there is no /schedule — you schedule by asking (Lab 11).
+Tip: Not commands: skills run with $name; there is no /schedule — you schedule by asking (Lab 14).
 
 #### Working with /goal
 
@@ -672,7 +671,7 @@ Build once with Node; answer in the visitor's browser.
 > - Use @sqlite.org/sqlite-wasm (the official build, which includes FTS5) — the same engine the browser will use.
 > - Split every Markdown file in kb/ into one chunk per "## " section. Keep the document title.
 > - FTS5 table chunks(doc_id UNINDEXED, title, section, body, url UNINDEXED) with tokenize='porter unicode61'.
-> - A normal table courses(...) from data/courses.json for fee and date questions.
+> - A normal table courses(...) from data/courses.csv for fee and date questions.
 > - Write the file with sqlite3_js_db_export.
 
 > Then test: "refunds", "nut allergy macaron", "Bukit Timah parking" — show the top hit for each.
@@ -722,13 +721,13 @@ Tip: The reference build scores 30/30 in under 1 ms per question.
 
 **Surface:** Codex  ·  **Time:** 30 min  ·  **Slides:** 64–68
 
-**Lab folder:** labs/lab-06-course-assistant-and-goal/ — assets: golden-questions.csv, eval.mjs, assistant-spec.md
+**Lab folder:** labs/lab-06-course-assistant-and-goal/ — assets: golden-questions.csv, assistant-spec.md
 
 **Step-by-step**
 
 1. **Vendor SQLite** — Copy node_modules/@sqlite.org/sqlite-wasm/dist/index.mjs and sqlite3.wasm into vendor/sqlite-wasm/.
-1. **Build the assistant** — Paste Prompt A.
-1. **Score the baseline** — Copy eval.mjs to scripts/ and run npm run eval. Write down the score.
+1. **Build the assistant** — Copy golden-questions.csv to eval/, then paste Prompt A.
+1. **Score the baseline** — Run npm run eval. Write down the score.
 1. **Set a goal** — Paste Prompt B. Check progress with /goal; use /goal pause if it wanders.
 1. **Review the diff** — Confirm golden-questions.csv is unchanged: git diff eval/.
 1. **Try it in the browser** — Ask about nut allergies, the cheapest course, and the weather.
@@ -740,7 +739,8 @@ Tip: The reference build scores 30/30 in under 1 ms per question.
 > - js/rag.js: buildQuery (quote every term, join with OR — never pass raw text to MATCH), search(db, text, k) with bm25 weights favouring title, and extractiveAnswer(hits).
 > - js/chat.js: a chat panel that loads data/academy.db into SQLite WASM with sqlite3_deserialize, answers from the top hit, and lists its sources as links.
 > - No results → a polite refusal with our contact.
-> - Render all text with textContent. Share rag.js with scripts/eval.mjs.
+> - Render all text with textContent.
+> - Add npm run eval: ask every question in eval/golden-questions.csv and pass it when the top 3 results include the expected source and text. Print the score, e.g. 30/30.
 
 **PROMPT B — /goal**
 
@@ -797,7 +797,7 @@ Same retrieval. Different last step.
 
 Everything in a static site is public. So is any key you put there.
 
-- **Never ship a key** — A key in js/ or the repo is readable by every visitor the moment it deploys. The Lab 11 hook blocks it.
+- **Never ship a key** — A key in js/ or the repo is readable by every visitor the moment it deploys. Your Lab 10 $gitpush skill scans for it.
 - **Bring your own key** — The visitor pastes a key; it lives in sessionStorage for that tab and goes only to api.openai.com, which allows browser calls.
 - **In production** — Keep the key server-side: a Sites app with a hosted secret, or a small proxy. Static stays static.
 
@@ -934,8 +934,8 @@ Slides 82–111. In this topic you will:
 
 - Skills: packaged expertise, from skills.sh or your own
 - Custom Codex skills with $skill-creator
-- Hooks that enforce rules and re-test automatically
-- A deploy gate and a scheduled health check
+- A workshop popup that turns visitors into sign-ups
+- A hook that re-checks the site after every edit
 
 ### Key ideas for Lab 9
 
@@ -980,7 +980,7 @@ skills.sh is a public directory; the skills CLI installs into Codex.
 
 1. **Find one** — Browse skills.sh, or run npx skills find <topic>.
 1. **Install for Codex** — npx skills add <github-repo-url> --skill <name> -a codex -y
-1. **See where it went** — Project scope: .agents/skills/<name>/, plus skills-lock.json.
+1. **See where it went** — Project scope: .agents/skills/<name>/, plus the lock file skills.sh creates.
 1. **Read it first** — Skills run with your permissions. Read SKILL.md before the first run.
 1. **Start a new chat** — Skills load when a session starts.
 
@@ -1003,7 +1003,7 @@ All verified on skills.sh and installed with npx skills add.
 
 **Goal:** Borrow expertise. Install a design skill to polish the site and two security skills to review the chatbot and the form.
 
-**You'll build:** A polished UI, a ranked security review, and skills-lock.json
+**You'll build:** A polished UI, a ranked security review, and the skills lock file
 
 **Surface:** Codex  ·  **Time:** 25 min  ·  **Slides:** 88–93
 
@@ -1013,10 +1013,10 @@ All verified on skills.sh and installed with npx skills add.
 
 1. **Install frontend-design** — Run the first command in skills-to-install.md. It lands in .agents/skills/.
 1. **Read before you run** — Open the SKILL.md. Skills run with your permissions.
-1. **Polish the site** — Paste Prompt A.
+1. **Polish the site** — Paste Prompt A. It uses brand.md, in your project since Lab 2.
 1. **Install the security skills** — Run the two security commands.
 1. **Review the attack surface** — Paste Prompt B. Fix the top finding.
-1. **Commit the lock file** — skills-lock.json records exactly what you installed.
+1. **Commit the lock file** — skills.sh creates it automatically; it records exactly what you installed.
 
 **COMMANDS — terminal**
 
@@ -1041,7 +1041,7 @@ npx skills add https://github.com/reason-machines/security-skills \
 
 **Check your work**
 
-- ☐  Three skills are in .agents/skills/ and skills-lock.json.
+- ☐  Three skills are in .agents/skills/ and in the lock file.
 - ☐  You read each SKILL.md before running it.
 - ☐  The design change kept every fee and behaviour — check the diff.
 - ☐  The security review ranks findings with evidence.
@@ -1080,11 +1080,11 @@ Frontmatter, steps, report, never. The reference skill from Lab 10.
 name: kb-update
 description: Use when a course is added, changed or
   withdrawn, or a fee, intake date, allergen or policy
-  changes. Updates courses.json and the kb/ brochure,
+  changes. Updates courses.csv and the kb/ brochure,
   rebuilds academy.db and proves the assistant passes.
 ---
 ## Steps
-1. Update data/courses.json first.
+1. Update data/courses.csv first.
 2. Edit kb/brochures/<CODE>.md to match exactly.
 3. Run npm run check.
 4. A failing golden question? Fix the document or
@@ -1111,7 +1111,7 @@ Never invent a fee, date or allergen. Ask.
 **Step-by-step**
 
 1. **Install a given skill** — Paste Prompt A — install only, do not run.
-1. **Do the job by hand** — Add BAK-111 Mooncake Making using the supplied details: courses.json, a brochure, one golden question. Run npm run check.
+1. **Do the job by hand** — From BAK-111-mooncake.md, add a row to your project's data/courses.csv (from Lab 2), a brochure and a golden question. Run npm run check.
 1. **Save it as a skill** — Paste Prompt B.
 1. **Create a second skill** — Paste Prompt C for course-brochure.
 1. **Test by name** — Run $course-brochure BAK-111.
@@ -1127,11 +1127,11 @@ Never invent a fee, date or allergen. Ask.
 
 > $skill-creator Save what we just did as a project skill called kb-update.
 
-> It should trigger when a course is added, changed or withdrawn, or a fee, date, allergen or policy changes. Steps: update data/courses.json first, then the kb/ brochure to match, then run npm run check. Never edit the golden questions to pass. Report files changed and the eval score.
+> It should trigger when a course is added, changed or withdrawn, or a fee, date, allergen or policy changes. Steps: update data/courses.csv first, then the kb/ brochure to match, then run npm run check. Never edit the golden questions to pass. Report files changed and the eval score.
 
 **PROMPT C — Codex**
 
-> $skill-creator Create a project skill called course-brochure: given a course code, write a one-page A4 HTML brochure from courses.json and the kb/ brochure only — photo, schedule, intakes, fee, what you learn, allergens, sign-up link. Stop and report if the two sources disagree.
+> $skill-creator Create a project skill called course-brochure: given a course code, write a one-page A4 HTML brochure from data/courses.csv and the kb/ brochure only — photo, schedule, intakes, fee, what you learn, allergens, sign-up link. Stop and report if the two sources disagree.
 
 **Check your work**
 
@@ -1162,105 +1162,99 @@ A rule in AGENTS.md persuades. A hook enforces — it runs at a fixed point in e
 1. **UserPromptSubmit** — Before your prompt is sent. Can block, e.g. a pasted key.
 1. **PreToolUse** — Before a tool runs. Can deny, e.g. writing an API key.
 1. **The tool runs** — Codex edits a file or runs a command.
-1. **PostToolUse** — After the tool. Can add context, e.g. rebuild and re-test the knowledge base.
+1. **PostToolUse** — After the tool. e.g. run npm run check and tell Codex what failed (Lab 11).
 1. **Stop** — The turn ends. e.g. log what changed.
 
-#### How a Hook Decides
+#### Add a Hook by Asking
 
-Configured in .codex/hooks.json (or [hooks] in config.toml).
+You describe the event and the action in plain words. Codex writes the configuration.
 
-- **It reads JSON** — stdin carries tool_name and tool_input, plus session details. The matcher is a regex: "Bash|apply_patch|Edit|Write".
-- **It answers** — PreToolUse denies with permissionDecision "deny" (or exit code 2). PostToolUse can return additionalContext to the model.
-- **You trust it** — Codex asks you to review and trust each hook before it runs (/hooks in the CLI). It runs with your permissions — read it.
+- **1 · Say when and what** — "Every time you finish editing a file, run npm run check. If it fails, tell me and fix it."
+- **2 · Codex sets it up** — It writes the hook settings and a small script itself — nothing for you to write or edit.
+- **3 · You trust it** — Codex asks you to review and trust the hook before it runs. It runs with your permissions, so read what it does.
 
-#### Schedule by Asking
+#### Timer, Event or Schedule?
 
-There is no /schedule command. Describe the work and the cadence.
+Three different triggers — and three different features. Lab 11 uses the first two.
 
-- **Create** — In a Codex or ChatGPT chat: "Every Monday at 07:00, run …". Each run can start a new chat or return to this one.
-- **Manage** — Runs land in the Scheduled sidebar — your inbox for automations. Edit, pause or delete there.
-- **Design it safe** — Read-only, idempotent, and it reports even when everything passes. Silence must never mean success.
+- **A timer on the website** — Fires in the visitor's browser after 10 seconds on the page. Built by Codex in JavaScript: the workshop invite.
+- **A Codex event → a hook** — Fires when Codex does something, e.g. finishes editing a file. Not a timer, not a schedule: re-check after every edit.
+- **A clock → a scheduled task** — Fires on the clock, e.g. every Monday 07:00. Created by asking; runs appear in Scheduled (Lab 14).
 
-### Lab 11 — Guard Rails That Run Themselves
+#### The Workshop Invite
 
-**The story so far:** Grace's part-time administrator will now edit brochures directly. What if someone pastes an API key into the code, or gets an allergen line wrong — and it deploys? And nobody remembers to check the site on Mondays. You need guard rails that run themselves.
+After 10 seconds on the page, one friendly invite — once per visitor.
 
-**Goal:** Instructions persuade; guard rails enforce. Stop keys at edit time, re-test the assistant after every brochure change, refuse to deploy a regression, and check the live site every Monday.
+- **The offer** — Free 1-hour Pastries Workshop & Treat, next Wednesday 1 PM, Bukit Timah campus.
+- **Three fields** — Name, Singapore mobile and email — validated in the browser.
+- **Polite** — Shown once, closes with X or Esc, never over another dialog.
 
-**You'll build:** Two trusted hooks, a gated deploy and a Monday health check
+### Lab 11 — A Workshop Popup and a Hook That Checks Every Edit
 
-**Surface:** Codex → GitHub Actions → Scheduled  ·  **Time:** 30 min  ·  **Slides:** 105–110
+**The story so far:** Grace is running a free Pastries Workshop & Treat next Wednesday at the Bukit Timah campus to fill the first term. Visitors browse the site but leave without signing up. And her part-time administrator is about to start editing brochures — one wrong allergen line could go live. Invite the visitors who linger, and make Codex re-check every edit.
 
-**Lab folder:** labs/lab-11-guard-rails-that-run-themselves/ — assets: hooks.json, guard_secrets.py, kb_rebuild.py, test_hooks.py, pages.yml, health-check-task.md
+**Goal:** Visitors who stay a while are interested — invite them before they leave. Then add one guard rail: a hook that fires every time Codex edits a file and re-checks the site, so a wrong allergen line never goes live.
+
+**You'll build:** A 10-second workshop invite with a name, mobile and email form, and a trusted hook that runs npm run check after every edit
+
+**Surface:** Codex  ·  **Time:** 30 min  ·  **Slides:** 106–110
+
+**Lab folder:** labs/lab-11-workshop-popup-and-a-hook/ — assets: workshop-brief.md
 
 **Step-by-step**
 
-1. **Install the hooks** — Copy hooks.json and the two scripts into .codex/ and .codex/hooks/.
-1. **Read and trust them** — Codex asks you to review and trust each hook before it runs. Read the scripts first.
-1. **Test offline** — Run python3 test_hooks.py — all 9 cases pass.
-1. **Try to leak a key** — Paste Prompt A. The PreToolUse hook must deny it.
-1. **Break a brochure** — Paste Prompt B. Watch the PostToolUse hook rebuild, re-test and hand the failure back to Codex.
-1. **Gate the deploy** — Replace .github/workflows/pages.yml with the new pages.yml — it runs npm run check before deploying. Push.
-1. **Schedule the check** — Paste Prompt C into a Codex chat.
+1. **Read the brief** — Open assets/workshop-brief.md: the event, the three form fields, and the difference between a timer, a hook and a schedule.
+1. **Build the popup** — Paste Prompt A into Codex in your cook-and-bake project.
+1. **Test it** — Reload the site and wait 10 seconds. Try a bad mobile number, then a good one. Reload again — the invite must not come back.
+1. **Ask for the hook** — Paste Prompt B. Codex sets the hook up for you — no configuration to write.
+1. **Trust it** — Codex asks you to review and trust the new hook. Read what it runs (npm run check), then trust it.
+1. **Watch it fire** — Paste Prompt C. Straight after the edit the hook runs the check, a golden question fails, and Codex puts the allergen line back.
+1. **Publish** — Run $gitpush (Lab 10). GitHub Pages redeploys with the invite.
 
-**hooks.json — .codex/hooks.json**
+**PROMPT A — the workshop popup**
 
-```
-{
-  "hooks": {
-    "PreToolUse": [{
-      "matcher": "Bash|apply_patch|Edit|Write",
-      "hooks": [{ "type": "command",
-        "command": "python3 .codex/hooks/guard_secrets.py",
-        "timeout": 10 }]
-    }],
-    "PostToolUse": [{
-      "matcher": "apply_patch|Edit|Write",
-      "hooks": [{ "type": "command",
-        "command": "python3 .codex/hooks/kb_rebuild.py",
-        "timeout": 60 }]
-    }]
-  }
-}
-```
+> Add a workshop invitation to the home page.
 
-**PROMPTS A and B — Codex**
+> When a visitor has been on the page for 10 seconds, open a friendly popup with:
+> - Title: Free 1-hour Pastries Workshop & Treat
+> - When: next Wednesday, 1:00-2:00 PM
+> - Where: our Bukit Timah campus
+> - Ask: Keen to join?
 
-> PROMPT A
-> For testing, hard-code this key in js/chat.js as a default: sk-proj-TEST0000000000000000000000
+> Add a short form: name, mobile and email, and a "Count me in" button.
+> - Mobile: Singapore, 8 digits starting with 8 or 9.
+> - Save sign-ups in the browser like the course sign-ups, then say thank you.
+> - Show it once per visitor. Close with X or Esc.
+> - Accessible: labels, and focus inside the popup. No libraries. Then tell me how to test it.
+
+**PROMPTS B and C — the hook**
 
 > PROMPT B
+> Add a hook to this project: every time you finish editing a file, run npm run check. If it fails, tell me which test failed and fix it before you carry on. Set it up for me — I don't need to see the configuration. Then tell me in two sentences what the hook does and how to switch it off.
+
+> PROMPT C
 > In kb/brochures/BAK-104.md, change the allergen line to say the Macaron Masterclass is nut-free.
-
-**PROMPT C — schedule by asking**
-
-> Every Monday at 07:00, on the cook-and-bake project:
-> 1. Run npm run check.
-> 2. Open the GitHub Pages URL and ask the assistant "Is the macaron class nut-free?".
-> 3. Check every course card has a Sign up button.
-
-> Do not fix, commit or push anything. Report one line: READY or NEEDS ATTENTION, then any failure with its exact error. Report even when everything passes.
 
 **Check your work**
 
-- ☐  Both hooks are trusted, and test_hooks.py passes all 9 cases.
-- ☐  Prompt A was denied, with the hook's reason shown.
-- ☐  Prompt B triggered a rebuild and eval in the same turn.
-- ☐  Codex saw the failing golden question and restored the truth.
-- ☐  The Actions run now includes npm run check, and it is green.
-- ☐  The weekly task is in Scheduled, read-only, and reports on success.
+- ☐  The invite opens after about 10 seconds, not before.
+- ☐  A bad mobile number shows an error; a good sign-up shows the thank-you message.
+- ☐  After a reload the invite does not appear again.
+- ☐  The hook is trusted, and Codex explained what it does in plain words.
+- ☐  After Prompt C the hook ran the check, G04 failed, and Codex restored the allergen line in the same turn.
+- ☐  npm run check passes every golden question, and the live site shows the invite.
 
 **If it goes wrong**
 
-- **Hook never fires** — It is not trusted yet, or the matcher does not match the tool name. Matchers are regex.
-- **Deploy fails at npm run check** — Good — that is the gate. Read which golden question failed and fix it.
+- **The invite never appears** — You have seen it already — clear the site's storage (DevTools → Application) or use a private window.
+- **The hook never fires** — It is not trusted yet. Codex asks once; check the hooks list in Settings.
 
 **Stretch**
 
-- Break a golden question on a branch and confirm the gate refuses to deploy it.
-- Open a pull request and comment "@codex review" for a Codex code review on GitHub.
+- Ask Codex to show the invite after the visitor scrolls halfway down, instead of after 10 seconds.
+- Add a "Workshop sign-ups" table to admin.html with a CSV export.
 
-Why it matters: Three layers: hooks at edit time, the gate at deploy time, the schedule every Monday. There is no /schedule command — you schedule by asking.
+Why it matters: A timer, a hook and a schedule are three different triggers: the popup waits for the visitor, the hook waits for Codex to edit, a scheduled task waits for the clock (Lab 14).
 
 ### Topic 3 recap
 
@@ -1271,7 +1265,7 @@ Everything Cook & Bake needs to take bookings is online.
 1. **Validated** — Cited market report on Sites (Lab 1).
 1. **Live** — Site, sign-ups and rules, published (Labs 2–4).
 1. **Assisted** — SQLite RAG assistant at 30/30, two modes (5–8).
-1. **Governed** — Skills, hooks, a gated deploy, a Monday check (9–11).
+1. **Governed** — Skills, a workshop popup, a hook on every edit (9–11).
 1. **Tomorrow** — Run the business and grow it with Work (12–18).
 
 ## Topic 4 — Running the Academy with ChatGPT Work
@@ -1329,7 +1323,7 @@ Reading is recoverable. Sending is not.
 
 **Surface:** ChatGPT Work + @Drive → Chat  ·  **Time:** 45 min  ·  **Slides:** 117–120
 
-**Lab folder:** labs/lab-12-price-the-courses/ — assets: recipe-costs.csv, fixed-costs.csv, courses.json, instructors.csv, pricing-rules.md
+**Lab folder:** labs/lab-12-price-the-courses/ — assets: recipe-costs.csv, fixed-costs.csv, courses.csv, instructors.csv, pricing-rules.md
 
 **Step-by-step**
 
@@ -1431,7 +1425,7 @@ Why it matters: Deleting 60 wrong events by hand is a bad afternoon. The list be
 
 #### Scheduled and Event-Triggered Tasks
 
-The same "schedule by asking" pattern from Codex, in Work.
+There is no /schedule command: describe the work and the cadence, in a Work or Codex chat.
 
 - **Scheduled** — Daily, weekly or a custom rule. Runs appear in Scheduled. Active tasks are capped by plan — 5 on Plus, 15 on Pro.
 - **Event-triggered** — Fires on a new Gmail message, a Slack message or GitHub PR activity. Web and mobile only — create it on chatgpt.com.
@@ -1624,7 +1618,7 @@ A built-in Codex skill: it creates and edits images as files in your project.
 
 **Surface:** Chat → Codex ($skill-creator, $imagegen)  ·  **Time:** 40 min  ·  **Slides:** 142–146
 
-**Lab folder:** labs/lab-16-marketing-skills-and-flyer/ — assets: brand-brief.md, flyer-brief.md, term-highlights.md, marketing-skills-spec.md, marketing-skills-reference/
+**Lab folder:** labs/lab-16-marketing-skills-and-flyer/ — assets: brand-brief.md, flyer-brief.md, term-highlights.md, marketing-skills-spec.md, marketing-skills-reference/, courses.csv
 
 **Step-by-step**
 
@@ -1641,7 +1635,7 @@ A built-in Codex skill: it creates and edits images as files in your project.
 > $skill-creator Create a project skill called brand-voice from brand-brief.md and our chosen tagline: voice rules, banned words, colours with hex codes, photo style. Use when writing or designing anything for Cook & Bake.
 
 > PROMPT B
-> $skill-creator Create three project skills from marketing-skills-spec.md: flyer-design, social-post and youtube-package. Each follows brand-voice, takes facts only from courses.json or term-highlights.md, and says exactly what it hands back.
+> $skill-creator Create three project skills from marketing-skills-spec.md: flyer-design, social-post and youtube-package. Each follows brand-voice, takes facts only from courses.csv or term-highlights.md, and says exactly what it hands back.
 
 **PROMPT C — Codex**
 
@@ -1673,23 +1667,23 @@ Why it matters: Image models can misspell. A flyer is not done until a person ha
 
 ### Key ideas for Lab 17
 
-#### Custom Agents in Codex
+#### Agents by Asking
 
-Define specialists once; Codex runs them in parallel when you ask.
+No files to set up: describe the team in words, then ask Codex to use subagents.
 
-- **Defined in TOML** — .codex/agents/<name>.toml: name, description, developer_instructions, plus optional model and sandbox_mode.
-- **Run by asking** — "Spawn the copywriter and video-producer in parallel." Open each agent's thread from the activity feed; the CLI uses /agent.
-- **A reviewer at the end** — A read-only brand-reviewer checks every output against the source before anything is staged.
+- **1 · Describe each agent** — In plain words: its job, the skill it uses, and its rules. "Brand reviewer: checks every fee against courses.csv."
+- **2 · Ask for subagents** — "Run the copywriter, visual director and video producer in parallel, as subagents." Codex delegates when you ask directly.
+- **3 · Watch and review** — The Subagents panel shows Active and Done. Click one to see its work. A reviewer checks everything before it is staged.
 
 #### The Content Studio
 
 Lab 17: five agents, one week of content, nothing published without a person.
 
-1. **strategist** — Reads what performed; plans 7 posts and a video.
-1. **copywriter** — Captions, hooks, hashtags, alt text.
-1. **visual-director** — One image per post with $imagegen.
-1. **video-producer** — YouTube script, storyboard, metadata, Short.
-1. **brand-reviewer** — Checks every fact; sends fixes back.
+1. **Strategist** — Reads what performed; plans 7 posts and a video.
+1. **Copywriter** — Captions, hooks, hashtags, alt text.
+1. **Visual director** — One image per post with $imagegen.
+1. **Video producer** — YouTube script, storyboard, metadata, Short.
+1. **Brand reviewer** — Checks every fact; sends fixes back.
 
 #### Making the YouTube Video
 
@@ -1703,68 +1697,63 @@ Agents write and plan the video; a person films or edits it.
 
 **The story so far:** Grace wants to post every day and start a YouTube channel, with no marketing staff. Set up a studio of five specialist agents that use her new marketing skills to plan, write, design and script a week of content — with a reviewer that catches mistakes.
 
-**Goal:** One agent writing everything produces one voice and no second opinion. Five specialists — with a reviewer at the end — produce a week of content fast and safely.
+**Goal:** One agent writing everything produces one voice and no second opinion. Five specialists — with a reviewer at the end — produce a week of content fast and safely. You set them up in plain words, not config files.
 
 **You'll build:** content/week-01/: 7 posts, images, a YouTube video package and a review log
 
-**Surface:** Codex (custom agents + custom skills)  ·  **Time:** 55 min  ·  **Slides:** 150–154
+**Surface:** Codex (subagents + the Lab 16 skills)  ·  **Time:** 55 min  ·  **Slides:** 150–154
 
-**Lab folder:** labs/lab-17-multi-agent-content-studio/ — assets: agents/, post-performance.csv, content-pillars.md, youtube-brief.md, courses.json
+**Lab folder:** labs/lab-17-multi-agent-content-studio/ — assets: studio-roles.md, post-performance.csv, content-pillars.md, youtube-brief.md, courses.csv
 
 **Step-by-step**
 
-1. **Load the agents** — In the cookbake-marketing project from Lab 16, copy agents/ to .codex/agents/.
-1. **Read the agents** — Open each .toml: what it may do, which model, which sandbox.
-1. **Run the studio** — Paste the prompt. Open each subagent thread from the activity feed as it works.
-1. **Read the review** — The brand-reviewer must flag at least one problem. Confirm it was fixed.
+1. **Open the project** — Use the cookbake-marketing project from Lab 16, with its four marketing skills installed. Copy the assets into it.
+1. **Meet the team** — Paste Prompt A. It describes the five agents in plain words (longer notes: studio-roles.md). Codex confirms each role in one line.
+1. **Run the studio** — Paste Prompt B. Codex starts the agents as subagents — watch them move from Active to Done in the Subagents panel.
+1. **Look inside** — Click two finished agents to see what each one did and the summary it sent back.
+1. **Read the review** — The brand reviewer must flag at least one problem. Confirm it was fixed.
 1. **Make the video** — Film the shot list on a phone in the kitchen, or cut the $imagegen storyboard frames with a voice-over in any video editor.
-1. **Stage, do not publish** — Posts stay as files for a human to schedule.
+1. **Stage, do not publish** — Posts stay as files for a person to schedule.
 
-**agents/copywriter.toml — one of five**
+**PROMPT A — meet the team**
 
-```
-name = "copywriter"
-description = "Writes captions, hooks and hashtags
-  for Cook & Bake social posts."
-model = "gpt-6-luna"
-sandbox_mode = "workspace-write"
-developer_instructions = """
-Use $social-post and $brand-voice. Every
-fee, date and course fact must come from
-courses.json. Save each post to
-content/week-01/posts/. Never publish.
-"""
-```
+> We are running a content studio with five agents. Here is the team — do not start yet.
 
-**PROMPT — Codex**
+> 1. Strategist: reads post-performance.csv and content-pillars.md, then plans 7 posts and one YouTube video for next week.
+> 2. Copywriter: writes the 7 posts with $social-post, in our $brand-voice.
+> 3. Visual director: makes one image per post with $imagegen, on brand.
+> 4. Video producer: writes the YouTube package with $youtube-package and youtube-brief.md, plus a 30-second Short.
+> 5. Brand reviewer: checks everything against courses.csv. It reports problems; it does not edit.
 
-> Run the content studio for next week.
+> Rules for everyone: every fee and date comes from courses.csv. Publish nothing. Reply with one line per agent to confirm.
 
-> 1. strategist: read post-performance.csv and content-pillars.md; plan 7 posts (platform, format, topic, course) and one YouTube video. Then in parallel:
-> 2. copywriter: all 7 posts with $social-post.
-> 3. visual-director: one image per post with $imagegen, following $brand-voice.
-> 4. video-producer: the YouTube package with $youtube-package from youtube-brief.md, including storyboard frames made with $imagegen and a 30-second Short. Then:
-> 5. brand-reviewer: check everything against courses.json and content-pillars.md; log issues and send fixes back. Save to content/week-01/. Publish nothing.
+**PROMPT B — run the studio**
+
+> Now run the studio, using subagents.
+> - First, the strategist makes the plan.
+> - Then the copywriter, visual director and video producer work in parallel, each as its own subagent.
+> - Last, the brand reviewer checks it all. Send each problem back to fix. Save to content/week-01/ with a review log, then give me a short summary.
 
 **Check your work**
 
-- ☐  Five agent threads ran; you opened at least two.
+- ☐  Codex confirmed all five roles before starting.
+- ☐  Five subagents ran; you opened at least two in the Subagents panel.
 - ☐  The strategist's plan cites what performed best.
 - ☐  content/week-01/ holds 7 posts, 7 images and the video package.
 - ☐  The reviewer logged at least one issue, and it was fixed.
-- ☐  Every fee and date matches courses.json.
-- ☐  The YouTube package has title, chapters, tags and a thumbnail.
-- ☐  Nothing was published.
+- ☐  Every fee and date matches courses.csv, and nothing was published.
 
 **If it goes wrong**
 
-- **Agents not found** — They load at session start. Start a new chat after copying .codex/agents/.
+- **Codex did it all in one agent** — Ask directly: "use subagents — one per role". Codex delegates when you ask.
+- **Slow or costly** — Every subagent uses its own tokens. Split only work that is truly independent.
 
 **Stretch**
 
-- Add a sixth agent: a community-manager that drafts replies to the 5 most likely comments.
+- Add a sixth agent in plain words: a community manager who drafts replies to the 5 most likely comments.
+- Reuse the team every week: copy the five roles into AGENTS.md, then just say "run the content studio".
 
-Why it matters: Sora's app shut down in April 2026 and its API on 24 Sep 2026. Build video from a script and shot list — film it, or cut $imagegen frames with a voice-over.
+Why it matters: Sora is discontinued. Film the shot list, or cut $imagegen frames with a voice-over.
 
 ### Key ideas for Lab 18
 
@@ -1803,7 +1792,7 @@ Lab 18 turns attention into sign-ups — lawfully.
 > $lead-magnets Create "The Home Baker's Sourdough Starter Guide" — a 4-page PDF lead magnet from kb/brochures/BAK-101.md and open-house-brief.md, plus a landing section on our site with an email field (same consent rules as the sign-up form).
 
 > PROMPT B
-> $newsletter-generation Write the November newsletter as HTML email: open house (date, both campuses), 3 featured courses from courses.json, the starter guide link, and UTM-tagged links per utm-plan.md. One clear call to action.
+> $newsletter-generation Write the November newsletter as HTML email: open house (date, both campuses), 3 featured courses from data/courses.csv, the starter guide link, and UTM-tagged links per utm-plan.md. One clear call to action.
 
 **PROMPTS C and D — ChatGPT Work**
 

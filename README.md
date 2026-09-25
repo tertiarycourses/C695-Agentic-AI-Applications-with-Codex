@@ -18,7 +18,7 @@ Learners play the AI-assisted team behind Cook & Bake Academy, a fictitious cook
 - **Operate** — ChatGPT Work prices the courses, puts the term on Google Calendar, handles enrolment and Gmail reminders, and runs customer service.
 - **Grow** — marketing know-how becomes custom skills; `$imagegen` makes the flyer; a multi-agent studio writes social posts and YouTube packages; the open-house campaign closes the loop.
 
-Along the way learners use the Codex features that make an agent dependable: `AGENTS.md`, `/plan`, `/goal`, plugins, `@Computer Use`, skills from skills.sh, custom skills, hooks, custom agents and scheduled tasks — and evaluate every result against evidence before it goes out.
+Along the way learners use the Codex features that make an agent dependable: `AGENTS.md`, `/plan`, `/goal`, plugins, `@Computer Use`, skills from skills.sh, custom skills, hooks, subagents and scheduled tasks — and evaluate every result against evidence before it goes out.
 
 ## Learning outcomes
 
@@ -35,9 +35,9 @@ By the end of the course, learners will be able to:
 |---|---|---|
 | 1 | **1. Fundamentals: Chat, Work and Codex** — evolution of AI engineering, harness engineering and the agent loop, OpenAI products and GPT-6 models, desktop app and plugins, the 7-step workflow, `/plan`, `AGENTS.md`, publishing | 1–4 |
 | 1 | **2. Tools and the SQLite RAG Assistant** — SQLite FTS5 knowledge base in the browser, `/goal`, bring-your-own-key ChatGPT mode, red-teaming, `@Computer Use` QA | 5–8 |
-| 1 | **3. Skills and Hooks** — `SKILL.md` vs `AGENTS.md`, installing skills from skills.sh, `$skill-creator`, hooks, a CI deploy gate and scheduled tasks | 9–11 |
+| 1 | **3. Skills and Hooks** — `SKILL.md` vs `AGENTS.md`, installing skills from skills.sh, `$skill-creator`, a timed workshop popup, and a hook that re-checks every edit | 9–11 |
 | 2 | **4. Running the Academy with ChatGPT Work** — pricing and break-even, `@Calendar`, `@Drive`, `@Gmail` enrolment and reminders, a customer-service skill | 12–15 |
-| 2 | **5. Digital Marketing** — marketing skills, the `$imagegen` flyer, custom agents for posts and video, lead magnet, newsletter and campaign analysis | 16–18 |
+| 2 | **5. Digital Marketing** — marketing skills, the `$imagegen` flyer, subagents for posts and video, lead magnet, newsletter and campaign analysis | 16–18 |
 
 ## Labs
 
@@ -53,7 +53,7 @@ Each lab has its own folder with the scenario and context, a step-by-step README
 8. [QA the Whole Site with @Computer Use](labs/lab-08-qa-with-computer-use/README.md)
 9. [Install Community Skills from skills.sh](labs/lab-09-skills-from-skills-sh/README.md)
 10. [Create Custom Codex Skills](labs/lab-10-custom-codex-skills/README.md)
-11. [Guard Rails That Run Themselves](labs/lab-11-guard-rails-that-run-themselves/README.md)
+11. [A Workshop Popup and a Hook That Checks Every Edit](labs/lab-11-workshop-popup-and-a-hook/README.md)
 12. [Price the Courses and Find Break-even](labs/lab-12-price-the-courses/README.md)
 13. [Put the Term on the Calendar](labs/lab-13-term-on-the-calendar/README.md)
 14. [Enrol the Learners and Automate Reminders](labs/lab-14-enrol-and-remind/README.md)
@@ -64,11 +64,11 @@ Each lab has its own folder with the scenario and context, a step-by-step README
 
 ## Public package
 
-- **Courseware v12.1** in [courseware/](courseware/):
-  - [Slide deck (PDF)](courseware/Agentic%20AI%20Applications%20with%20Codex%20%28C695%29-v12.1.pdf) · [PPTX](courseware/Agentic%20AI%20Applications%20with%20Codex%20%28C695%29-v12.1.pptx)
+- **Courseware v12.4** in [courseware/](courseware/):
+  - [Slide deck (PDF)](courseware/Agentic%20AI%20Applications%20with%20Codex%20%28C695%29-v12.4.pdf) · [PPTX](courseware/Agentic%20AI%20Applications%20with%20Codex%20%28C695%29-v12.4.pptx)
   - [Learner Guide (PDF)](courseware/LG-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.pdf) · [DOCX](courseware/LG-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.docx)
   - [Lesson Plan (PDF)](courseware/LP-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.pdf) · [DOCX](courseware/LP-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.docx)
-- [Learner Guide (Markdown, v12.1)](LG-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.md) — concepts and the full step-by-step procedure for every lab
+- [Learner Guide (Markdown, v12.4)](LG-Agentic%20AI%20Applications%20with%20Codex%20%28C695%29.md) — concepts and the full step-by-step procedure for every lab
 - [Scenario](labs/SCENARIO.md) and [labs index](labs/README.md)
 - 18 self-contained lab folders; Lab 11's solution holds the complete verified Cook & Bake site
 
@@ -76,7 +76,7 @@ You need the ChatGPT desktop app ([download](https://chatgpt.com/download/)) wit
 
 ## Distribution boundary
 
-This public repository contains the courseware, learner-safe guidance, synthetic data and lab assets. Only the current courseware version is published. Source references, build tooling, archived versions, credentials, `.env` files and QA artifacts are intentionally excluded. The API keys in Lab 11 (`sk-proj-TEST…`) are deliberate fakes used to prove the secrets hook works.
+This public repository contains the courseware, learner-safe guidance, synthetic data and lab assets. Only the current courseware version is published. Source references, build tooling, archived versions, credentials, `.env` files and QA artifacts are intentionally excluded.
 
 ## Provider
 
